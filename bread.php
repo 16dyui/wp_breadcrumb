@@ -1,4 +1,5 @@
-<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+<ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+	<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 		<a href="/" itemprop="item"><span itemprop="name">TOP</span></a><meta itemprop="position" content="1">
 	</li>
 	<?php if(is_single() || is_post_type_archive()): ?>
