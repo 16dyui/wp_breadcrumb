@@ -15,10 +15,20 @@
 		</li>
 	<?php
 		endif;
-		if(is_tax()):
+		if(is_tax() || is_category()):
 	?>
 		<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-			<a href="" itemprop="item"><span itemprop="name"><?=$wp_query->queried_object->name?></span></a><meta itemprop="position" content="2">
+			<a href="/column_list/" itemprop="item"><span itemprop="name">コラム</span></a><meta itemprop="position" content="2">
+		</li>
+		<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+			<a href="" itemprop="item"><span itemprop="name"><?=$wp_query->queried_object->name?></span></a><meta itemprop="position" content="3">
+		</li>
+	<?php
+		endif;
+		if(is_single()):
+	?>
+		<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+			<a href="<?php foreach(get_terms('category') as $tag) echo get_term_link($tag) ?>" itemprop="item"><span itemprop="name"><?php  foreach(get_the_category() as $cat) echo $cat->name; ?></span></a><meta itemprop="position" content="3">
 		</li>
 	<?php
 		endif;
@@ -32,7 +42,7 @@
 					break;
 				$pare = get_page($pare->post_parent);
 			}
-			$c=is_page() ? 2 : 3;
+			$c=is_page() ? 2 : 4;
 			foreach(array_reverse($bread) as $value) {
 				echo $value.$c.'"></li>';
 				$c++;
